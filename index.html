@@ -1,14 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>HTML Test Placeholder</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#060b18" />
+  <meta name="description" content="A simple, interactive nighttime soundscape for Lab 5." />
+  <title>The Sound of the Moon — Lab 5</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
-	<main>
-		<h1>Test Placeholder</h1>
-		<div id="test-object" data-testid="placeholder">Placeholder content</div>
-	</main>
+  <main class="scene">
+    <div class="stars" id="stars" aria-hidden="true"></div>
+    <div class="horizon" aria-hidden="true"></div>
+
+    <header class="intro">
+      <p class="eyebrow">DESIGN WITH SOUND &amp; VISION · LAB 5</p>
+      <h1>The Sound of the Moon</h1>
+      <p class="subtitle">A quiet night beneath the stars.</p>
+    </header>
+
+    <section class="sky" aria-label="Interactive moon and soundscape">
+      <button class="moon-button" id="moonButton" type="button"
+              aria-label="Change moon glow and jump to a random audio moment" title="Click to change the glow and jump to a random audio moment">
+        <span class="moon-aura" aria-hidden="true"></span>
+        <span class="moon-ring" aria-hidden="true"></span>
+        <img class="moon" src="assets/moon.png" alt="A detailed full moon" />
+      </button>
+      <p class="moon-hint">Click the moon to change its glow and jump to a random moment</p>
+    </section>
+
+    <section class="player" aria-label="Soundscape audio player">
+      <div class="track-info">
+        <div>
+          <p class="track-label">NOW LISTENING</p>
+          <h2>Night Crickets</h2>
+          <p class="track-description">Wind, insects, and the stillness of a moonlit park</p>
+        </div>
+        <span class="sound-indicator" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </div>
+
+      <div class="playback">
+        <button id="playButton" class="play-button" type="button" aria-label="Play soundscape">
+          <svg id="playIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          <svg id="pauseIcon" class="hidden" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="seek-group">
+          <label class="sr-only" for="seekBar">Audio progress</label>
+          <input type="range" id="seekBar" min="0" max="100" value="0" step="0.1" aria-label="Audio progress" />
+          <div class="times"><span id="currentTime">0:00</span><span id="duration">1:22</span></div>
+        </div>
+        <div class="volume-control">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm12.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zm-2.5-8.74v2.06c2.89.86 5 3.54 5 6.68s-2.11 5.82-5 6.68v2.06c4.01-.91 7-4.49 7-8.74s-2.99-7.83-7-8.74z" fill="currentColor"/></svg>
+          <label class="sr-only" for="volumeBar">Volume</label>
+          <input type="range" id="volumeBar" min="0" max="1" step="0.05" value="0.85" aria-label="Volume" />
+        </div>
+      </div>
+      <p class="status" id="status" role="status">Press play to hear the night.</p>
+      <audio id="audio" src="assets/night-crickets.mp3" preload="metadata"></audio>
+    </section>
+
+    <footer class="footer">
+      <p>A soundscape inspired by a peaceful evening outdoors.</p>
+      <p>Field recording: <a href="https://freesound.org/people/OwlStorm/sounds/320145/" target="_blank" rel="noopener noreferrer">OwlStorm / Freesound</a> (CC0)</p>
+    </footer>
+  </main>
 </body>
 </html>
